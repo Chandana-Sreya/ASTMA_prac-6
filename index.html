@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enhanced Interactive Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #151616;
+            color: #fff;
+            border: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 20px;
+            font-size: 16px;
+            margin: 10px;
+            border-color: #151616;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <br><br><br><br>
+    <h1><b>Welcome!</b></h1>
+    <br>
+    <br>
+    <p>Click the button below to change the background color:</p>
+    <br>
+    <button id="colorButton">Change Color</button>
+    <br><br>
+    <p id="clickCounter">Button clicked <span id="count">0</span> times.</p>
+
+    <br>
+    <br>
+    <form id="nameForm">
+        <label for="name"><b>Enter your name: </b></label>
+        <input type="text" id="name" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="personalizedMessage"></p>
+
+    <script>
+        // JavaScript to change background color when the button is clicked
+        var clickCount = 0;
+        document.getElementById("colorButton").addEventListener("click", function () {
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+
+            // Update click counter
+            clickCount++;
+            document.getElementById("count").textContent = clickCount;
+        });
+
+        // JavaScript for personalized message
+        document.getElementById("nameForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent form submission
+            var name = document.getElementById("name").value;
+            var personalizedMessage = "Hello, " + name + "! Thanks for visiting!";
+            document.getElementById("personalizedMessage").textContent = personalizedMessage;
+        });
+    </script>
+</body>
+</html>
